@@ -43,7 +43,7 @@ int main()
 	setlocale(LC_ALL, "ru");
 	cout << "---		SORT(сортировка)		---" << endl;
 
-	vector<int> vec = { 1,28,308,94,299,77 };
+	vector<int> vec = { 1,27,307,95,298,77 };
 
 	for (auto elem : vec)
 	{
@@ -120,6 +120,40 @@ int main()
 
 	cout << endl;
 
+	cout << endl << endl << "---		Поиск(find, find_if, find_if_not)		---" << endl;
+
+	auto pl = find(begin(vec), end(vec), 28); // Возвращает итератор, указывающий на то место в коллекции, где находится элемент, если не найдет - вернет end()
+	
+	if (pl != end(vec))
+	{
+		cout << "Нашел!" << endl;
+	}
+	else
+	{
+		cout << "Увы((" << endl;
+	}
+
+	cout << endl;
+
+	auto res = find_if(begin(vec), end(vec), [](int a) { // find_if_not - то же самое, но возвращает инверсированный ответ
+
+		return a % 2 == 0;
+		});
+
+	if (res != end(vec))
+	{
+		cout << "Есть!" << endl;
+	}
+	else
+	{
+		cout << "Увы((" << endl;
+	}
+
+	auto res2 = find_if(begin(vs), end(vs), [](const Students& s) {
+
+		return s.score > 99 && s.score < 101;
+
+		});
 
 
 
