@@ -120,6 +120,13 @@ int main()
 
 	cout << endl;
 
+
+
+
+
+
+
+
 	cout << endl << endl << "---		Поиск(find, find_if, find_if_not)		---" << endl;
 
 	auto pl = find(begin(vec), end(vec), 28); // Возвращает итератор, указывающий на то место в коллекции, где находится элемент, если не найдет - вернет end()
@@ -156,6 +163,27 @@ int main()
 		});
 
 
+
+
+
+
+	cout << endl << endl << "---		Copy, copy_if		---" << endl;
+
+	vector<Students> result;
+
+	//copy(begin(vs), end(vs), back_inserter(result));
+
+	copy_if(begin(vs), end(vs), back_inserter(result), [](const Students& st)
+		{
+			return st.score > 150;
+		});
+
+	cout << "Всего элементов:	" << result.size() << endl;
+
+	for (auto elem : result)
+	{
+		cout << "Имя:	" << endl << elem.name << "	Баллы:	" << elem.score << endl;
+	}
 
 	return 0;
 }
