@@ -221,5 +221,44 @@ int main()
 		cout << "Имя:	" << elem.name << "	Баллы:	" << elem.score << endl;
 	}
 
+
+
+
+	cout << endl << endl << "---		Поиск максимального элемента		---" << endl;
+
+	vector<int> vr = { 1,10,9,77,61,3 };
+
+	vector<int> lst = { 33, 82, 19, 39, 48, 99 };
+
+	auto reslt = max_element(begin(vr), end(vr));
+	cout << *reslt << endl;
+
+	auto reslt2 = max_element(begin(lst), end(lst));
+	cout << *reslt2 << endl;
+
+	const int SIZE2 = 5;
+
+	int arr2[SIZE2] = { 1,2,4,23,5 };
+	auto reslt3 = max_element(arr2, arr2 + SIZE);
+	cout << *reslt3 << endl;
+
+
+
+	cout << endl << endl << "---		Поиск минимального элемента		---" << endl;
+	// Все то же самое, что и при поиске макс эл-та, но алгоритм называется min_element
+
+	auto resl = min_element(begin(lst), end(lst));
+	cout << *resl << endl;
+
+
+
+
+
+	cout << endl << endl << "---		Поиск минимального и максимального элемента	одновременно 	---" << endl;
+
+	auto rel = minmax_element(begin(lst), end(lst));
+	cout << "min:	" << *rel.first << "	max:	" << *rel.second << endl;
+
+
 	return 0;
 }
