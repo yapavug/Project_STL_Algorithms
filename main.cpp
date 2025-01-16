@@ -182,7 +182,43 @@ int main()
 
 	for (auto elem : result)
 	{
-		cout << "Имя:	" << endl << elem.name << "	Баллы:	" << elem.score << endl;
+		cout << "Имя:	" << elem.name << "	Баллы:	" << elem.score << endl;
+	}
+
+
+
+
+
+	cout << endl << endl << "---		Удаление - remove, remove_if		---" << endl;
+
+	vector<int> v = { 1,2,88,91,26,10,3 }; // remove не удаляет элементы, а переносит их в конец и возвращает итератор на позицию за последним неисключенным элементом
+
+	//auto ress = remove(begin(v), end(v), 10);
+
+	//v.erase(ress, v.end()); // erase удаляет элементы из контейнера
+
+	//for (auto elem : v)
+	//{
+	//	cout << elem << endl;
+	//}
+
+	cout << endl;
+
+	for (auto elem : vs)
+	{
+		cout << "Имя:	" << elem.name << "	Баллы:	" << elem.score << endl;
+	}
+
+	vs.erase(remove_if(begin(vs), end(vs), [](const Students& st) // Здесь сразу то, что вернул remove_if было использовано в качестве первого аргумента erase
+		{
+			return st.score < 150;
+		}), end(vs));
+
+	cout << endl;
+
+	for (auto elem : vs)
+	{
+		cout << "Имя:	" << elem.name << "	Баллы:	" << elem.score << endl;
 	}
 
 	return 0;
