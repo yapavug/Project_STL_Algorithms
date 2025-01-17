@@ -322,5 +322,24 @@ int main()
 	}
 
 
+
+
+
+
+	cout << endl << endl << "---		for_each	 	---" << endl; // Не относится к библиотеке STL, но рассматриваю этот цикл
+
+	int al[] = { 1,22,33,4,5 };
+
+	for_each(begin(al), end(al), [](int a) 
+	{
+		
+		cout << a << endl;
+
+	});
+
+
+
+
+
 	return 0;
 }
