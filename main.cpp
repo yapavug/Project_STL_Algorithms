@@ -295,6 +295,31 @@ int main()
 	cout << "Result 2:	" << ress2 << endl;
 
 
+	cout << endl << endl << "---		equal и mismatch 	---" << endl;
+	// equal позвол€ет сравнивать два даже абсолютно разных контейнера
+	// mismatch работает так же, но если он нашел несоответствие в контейнерах, он возвращает пару итераторов, указывающих на эти элементы
+
+	int ar[] = { 1,2,3,55,6 };
+
+	vector<int> vvec = { 6,2,3,55,1 };
+
+	//sort(begin(ar), end(ar));
+
+	//sort(begin(vvec), end(vvec));
+
+	int ar2[] = { 1,2,3,55,6 };
+
+	bool eq = equal(begin(ar), end(ar), begin(vvec), end(vvec));
+
+	cout << eq << endl;
+
+
+	auto eq2 = mismatch(begin(ar), end(ar), begin(vvec), end(vvec)); // ћожно п€тым аргументом добавить анонимную функцию дл€ изменени€ логики сравнени€
+
+	if (eq2.first != end(ar) && eq2.second != end(vvec))
+	{
+		cout << " оллекции не равны!" << endl;
+	}
 
 
 	return 0;
