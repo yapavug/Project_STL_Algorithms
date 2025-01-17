@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <vector>
 #include <string>
+#include <numeric>
 
 using namespace std;
 
@@ -258,6 +259,42 @@ int main()
 
 	auto rel = minmax_element(begin(lst), end(lst));
 	cout << "min:	" << *rel.first << "	max:	" << *rel.second << endl;
+
+
+
+
+
+
+
+
+	cout << endl << endl << "---		Сумма элементов		---" << endl;
+	// Алгоритм находится в библиотеке numeric
+	// Очень полезный алгоритм, позволяет организовать сложение, умножение, и много чего еще
+
+	vector<int> w = { 1,2,8,2,3 };
+
+	auto ress = accumulate(begin(w), end(w), 0); // Третий аргумент - "точка отсчета"
+
+	cout << "Result:		" << ress << endl;
+
+
+	auto ress2 = accumulate(begin(w), end(w), 0, [](int a, int b) { // В этом примере рассмотрен момент, когда можно самостоятельно прописать логику работы accumulate
+		//Причем первый параметр анонимной функции (a) - к нему будет прибавляться/умножаться/.. b
+
+		if (b % 2 == 0)
+		{
+			 return a + b;
+		}
+		else
+		{
+			return a;
+		}
+
+		}); // Третий аргумент - "точка отсчета"
+
+	cout << "Result 2:	" << ress2 << endl;
+
+
 
 
 	return 0;
