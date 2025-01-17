@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <numeric>
+#include <list>
 
 using namespace std;
 
@@ -50,7 +51,7 @@ int main()
 	{
 		cout << elem << endl;
 	}
-	
+
 	cout << endl;
 
 	sort(begin(vec), end(vec), [](int a, int b) {
@@ -112,7 +113,7 @@ int main()
 
 		return s1.score > s2.score;
 
-	}); 
+		});
 
 	for (auto elem : vs)
 	{
@@ -131,7 +132,7 @@ int main()
 	cout << endl << endl << "---		Поиск(find, find_if, find_if_not)		---" << endl;
 
 	auto pl = find(begin(vec), end(vec), 28); // Возвращает итератор, указывающий на то место в коллекции, где находится элемент, если не найдет - вернет end()
-	
+
 	if (pl != end(vec))
 	{
 		cout << "Нашел!" << endl;
@@ -283,7 +284,7 @@ int main()
 
 		if (b % 2 == 0)
 		{
-			 return a + b;
+			return a + b;
 		}
 		else
 		{
@@ -328,17 +329,36 @@ int main()
 
 	cout << endl << endl << "---		for_each	 	---" << endl; // Не относится к библиотеке STL, но рассматриваю этот цикл
 
-	int al[] = { 1,22,33,4,5 };
+	int al[] = { 1,1,22,33,33,33,4,5 };
 
-	for_each(begin(al), end(al), [](int a) 
-	{
-		
-		cout << a << endl;
+	for_each(begin(al), end(al), [](int a)
+		{
 
-	});
+			cout << a << endl;
+
+		});
 
 
 
+
+	cout << endl << endl << "---		unique, unique_copy - Удаление повторяющихся элементов	 	---" << endl;
+
+	auto unu = unique(begin(al), end(al)); // Алгоритм не удаляет дубликаты, а перемещает их в конец и возвращает итератор на первый дубликат в коллекции
+
+	for_each(begin(al), unu, [](int a)
+		{
+			cout << a << endl;
+		});
+
+	vector<int> vctr = { 1,2,3,3,3,3,4,4,5,6,9 };
+
+	auto unq = unique(begin(vctr), end(vctr));
+
+	vctr.erase(unq, vctr.end());
+
+	list<int> vctr2;
+
+	unique_copy(begin(vctr), end(vctr), back_inserter(vctr2)); //Схож с unique, но позволяет скопировать элементы в новый контейнер
 
 
 	return 0;
