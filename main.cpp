@@ -4,6 +4,7 @@
 #include <string>
 #include <numeric>
 #include <list>
+#include <ctime>
 
 using namespace std;
 
@@ -37,6 +38,81 @@ public:
 	string name;
 	int score;
 };
+
+
+
+
+class IAction
+{
+public:
+	virtual void Action() = 0;
+
+private:
+
+};
+
+
+class DogAction : public IAction
+{
+public:
+	virtual void Action() override
+	{
+		cout << "Собака гавкает" << endl;
+	}
+
+private:
+
+};
+
+
+
+class CatAction : public IAction
+{
+public:
+	virtual void Action() override
+	{
+		cout << "Кот мяукает" << endl;
+	}
+
+private:
+
+};
+
+
+class BullAction : public IAction
+{
+public:
+	
+	virtual void Action() override
+	{
+		cout << "Бык бадается" << endl;
+	}
+
+private:
+
+};
+
+
+class CockAction : public IAction
+{
+public:
+	void virtual Action() override
+	{
+		cout << "Петух кукарекает" << endl;
+	}
+
+private:
+
+};
+
+
+
+
+
+
+
+
+
 
 
 
@@ -359,6 +435,42 @@ int main()
 	list<int> vctr2;
 
 	unique_copy(begin(vctr), end(vctr), back_inserter(vctr2)); //Схож с unique, но позволяет скопировать элементы в новый контейнер
+
+
+
+
+
+
+	cout << endl << endl << "---		random_shuffle - Сртировка массива  в случайном порядке	 	---" << endl;
+
+	int a2r[] = { 1,2,3,55,91,17,4 };
+
+	srand(time(NULL));
+
+	random_shuffle(begin(a2r), end(a2r));
+
+	for (auto elem : a2r)
+	{
+		cout << elem << endl;
+	}
+
+	cout << endl;
+
+	IAction* act[] =
+	{
+		new DogAction(),
+		new CatAction(),
+		new BullAction(),
+		new CockAction()
+	};
+
+	random_shuffle(begin(act), end(act));
+
+	for (auto elem : act)
+	{
+		elem->Action();
+	}
+
 
 
 	return 0;
